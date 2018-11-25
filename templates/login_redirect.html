@@ -16,12 +16,9 @@
 </div>
 <div align="center" style="margin-top: 50px">
 <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
     <br>
-    <br>
-    <a href="/instructor/newinstructor/" style="color:#3D8E06;"><b> Sign up as instructor </b></a>
+    <a href="/instructor/login/" style="color:#3D8E06;"><b> Login as instructor </b></a><br>
+    <a href="login_student" style="color:#3D8E06;"><b> Login as student </b></a>
 </form>
 </div>
 </body>

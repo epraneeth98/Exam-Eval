@@ -19,6 +19,8 @@ from django.urls import include,path
 from . import views
 
 urlpatterns = [
+	path('login/',views.login,name='login_instructor'),
+	path('newinstructor/',views.newinstructor),
     path('', views.index),
     path('logout/',views.logout),
     path('new_exam',views.new_exam,name='new_exam'),
@@ -26,4 +28,5 @@ urlpatterns = [
     path('edit_question/<int:question_id>',views.edit_question,name='edit_question'),
     path('new_question/<int:exam_id>',views.new_question,name='new_question'),
     path('exam/<int:exam_id>',views.show_exam,name='show_exam'),
+    path('topics_in_qb/',views.topics_in_qb,name='topics_in_qb'),
 ]

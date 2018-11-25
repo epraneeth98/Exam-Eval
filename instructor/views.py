@@ -1,8 +1,45 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import NewExamForm, NewQuestionForm
+from .forms import NewExamForm, NewQuestionForm, NewInstructorForm
+from user.forms import LoginForm
 from django.shortcuts import render
-from instructor.models import User as Instructor, Exam, Question
+from user.models import User as Instructor
+from .models import Exam, Question, Topic
 
+def login(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = LoginForm(request.POST)
+        username = form.data['username']
+        password = form.data['password']
+        instructor = Instructor.objects.all().filter(username = username).filter(password = password)
+        # user = Instructor.authenticate(request, username=username, password=password)
+        if form.is_valid():
+            if len(instructor)==0 :
+                return render(request, 'name.html', {'form': form})
+            else:
+                request.session['username'] = username
+                return HttpResponseRedirect('/instructor')
+    else:
+        form = LoginForm()
+    return render(request, 'name.html', {'form': form})
+
+
+
+def newinstructor(request):
+    if request.method == 'POST':
+        form = NewInstructorForm(request.POST)
+        username=form.data['username']
+        if form.is_valid():
+            newinstr=form.save(commit = False)
+            newinstr.is_student = False
+            newinstr.is_instructor = True
+            newinstr.save()
+            request.session['username'] = newinstr.username
+            return HttpResponse(newinstr.username)
+    else:
+        form = NewInstructorForm()
+    return render(request, 'newinstructor.html', {'form': form})
 
 def index(request):
 	username = request.session['username']
@@ -94,6 +131,14 @@ def show_exam(request, exam_id):
 	print(questions_set[0].question_text)
 	return render(request, 'show_exam.html', {'questions_set':questions_set, 'exam':exam})
 
+def topics_in_qb(request):
+    username = request.session['username']
+    instructor = Instructor.objects.get(username = username)
+    topics_set = Topic.objects.filter(course = instructor.course)
+    return render(request, 'topics_in_qb.html', {'instructor': instructor, 'topics_set':topics_set})
+
+
+
 def logout(request):
     try:
         username = request.session['username']
@@ -101,11 +146,3 @@ def logout(request):
     except KeyError:
         pass
     return HttpResponseRedirect('/')
-
-
-
-
-
-
-
-

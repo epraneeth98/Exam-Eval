@@ -1,5 +1,5 @@
 from django import forms
-from .models import Exam, Question
+from .models import Exam, Question, Instructor
 
 class NewExamForm(forms.ModelForm):
     class Meta :
@@ -14,4 +14,9 @@ class NewQuestionForm(forms.ModelForm):
 	class Meta :
 		model = Question
 		fields = ['question_text','choice1','choice2','choice3','answer']
-		
+
+
+class NewInstructorForm(forms.ModelForm):
+    class Meta :
+        model = Instructor
+        fields = ['username','password','first_name','last_name','email','department','course']
