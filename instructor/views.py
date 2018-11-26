@@ -16,13 +16,13 @@ def login(request):
         # user = Instructor.authenticate(request, username=username, password=password)
         if form.is_valid():
             if len(instructor)==0 :
-                return render(request, 'name.html', {'form': form})
+                return render(request, 'instructor_login.html', {'form': form})
             else:
                 request.session['username'] = username
                 return HttpResponseRedirect('/instructor')
     else:
         form = LoginForm()
-    return render(request, 'name.html', {'form': form})
+    return render(request, 'instructor_login.html', {'form': form})
 
 
 

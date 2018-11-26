@@ -15,10 +15,14 @@
 	
 </div>
 <div align="center" style="margin-top: 50px">
+	Student login<br>
 <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
     <br>
-    <a href="/instructor/login/" style="color:#3D8E06;"><b> Login as instructor </b></a><br>
-    <a href="/student/login/" style="color:#3D8E06;"><b> Login as student </b></a>
+    <br>
+    <a href="/student/newstudent/" style="color:#3D8E06;"><b> Sign up as student </b></a>
 </form>
 </div>
 </body>

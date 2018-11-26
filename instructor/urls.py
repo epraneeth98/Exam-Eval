@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
 	path('login/',views.login,name='login_instructor'),
-	path('newinstructor/',views.newinstructor),
+	path('newinstructor/',views.newinstructor,name='newinstructor'),
     path('', views.index),
     path('logout/',views.logout),
     path('new_exam',views.new_exam,name='new_exam'),
