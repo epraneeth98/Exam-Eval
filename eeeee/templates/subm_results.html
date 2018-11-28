@@ -1,0 +1,61 @@
+<head>
+	<title>Welcome {{ ta.username }}</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<style>
+	input {
+		border-radius: 5px;
+	}
+	body{
+   	 background-color: #f9f6ed;
+  	}
+</style>
+
+</head>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="color">
+  <!-- Links -->
+  <ul class="navbar-nav">
+   <!-- Dropdown -->
+    <li class="nav-item">
+      <a class="nav-link" href="/instructor" style="color: white">Home</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: white">
+        Create Exam
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/instructor/new_exam">Objective</a>
+        <a class="dropdown-item" href="/instructor/new_subjective_exam">Subjective</a>
+      </div>
+    </li>
+    <li class="nav-item" style="margin-left: 1050px">
+      <a class="nav-link" href="/instructor/logout" style="color: white">Logout</a>
+    </li>
+  </ul>
+</nav>
+
+
+<div align="center" style="margin: 30px;border-radius: 5px;padding: 30px">
+	<p style="font-size:24px"><b>Student Statistics</b></p>
+	<table class="table table-stripped table-hover" style="background-color: white">
+		<thead class="thead-dark">
+		<tr align="center">
+			<th>S. No.</th>
+			<th>Student Name</th>
+			<th>Marks obtained</th>
+		</tr>
+		</thead>
+		<tbody>
+	   		{% for e in examtaken_set %}
+	   		<tr align="center">
+		   		<td>{{forloop.counter}}.</td>
+		   		<td>{{e.user.username}}</td>
+		   		<td>{{e.marks_obtained}}</td>
+		   	</tr>
+	   		{% endfor %}
+   		</tbody>
+	</table>
+    <br><br>
+</div>

@@ -1,0 +1,12 @@
+
+
+{% for q in qb %}
+	<div align="left" style="margin: 10px;background-color: #D3D3D3;border-radius: 5px;padding: 30px">
+	{{forloop.counter}}.{{q.question_text}}&nbsp;<br>
+	&nbsp; 1.{{q.choice1}}<br>
+	&nbsp; 2.{{q.choice2}}<br>
+	&nbsp; 3.{{q.choice3}}<br>
+	&nbsp; Answer:.{{q.answer}}<br>
+	<a href="/instructor/new_question_from_db/{{ exam_id }}/{{ q.id }}">add question</a>
+</div>
+{% endfor %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome {{ ta.username }}</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<style>
+  input {
+    border-radius: 5px;
+  }
+</style>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="color">
+    <!-- Links -->
+    <ul class="navbar-nav">
+     <!-- Dropdown -->
+      <li class="nav-item">
+        <a class="nav-link" href="/" style="color: white;">Home</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- <h4 style="margin-left: 80px;">Welcome {{ ta.username }}</h4> -->
+  <div style="border-radius: 5px;padding: 30px">
+  
+ <ul>
+    <li>
+      <a href="{% url 'model_form_upload' %}">Upload Paper</a>
+    </li>
+  </ul>
+
+  <p>Uploaded files:</p>
+  <ul>
+    {% for obj in documents %}
+      <li>
+        <a href="{{ obj.document.url }}">{{ obj.document.name }}</a>
+        <small>(Uploaded at: {{ obj.uploaded_at }})</small>
+      </li>
+    {% endfor %}
+  </ul>
+  </div>
+</body>
+</html>
+{% endblock %}

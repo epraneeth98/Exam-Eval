@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome {{ student.username }}</title>
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<style>
+	input {
+		border-radius: 5px;
+	}
+</style>
+
+</head>
+<body>
+ 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="color">
+	  <!-- Links -->
+	  <ul class="navbar-nav">
+	   <!-- Dropdown -->
+	    <li class="nav-item">
+	      <a class="nav-link" href="/student" style="color: white;">Home</a>
+	    </li>
+	    <li class="nav-item" style="margin-left: 1650px">
+	      <a class="nav-link" href="/instructor/logout" style="color: white">Logout</a>
+	    </li>
+	  </ul>
+	</nav>
+	<!-- <h4 style="margin-left: 80px;">Welcome {{ ta.username }}</h4> -->
+	<div align="center" style="margin-left: 500px;margin-right: 500px;border-radius: 5px;padding: 30px">
+	
+	<p style="font-size:24px"><b>Answer Script</b></p>
+	<table class="table table-stripped table-hover" style="margin-top: 0px">
+		<thead class="thead-dark">
+		<tr align="center">
+			<th>S. No.</th>
+			<th>Answer</th>
+		</tr>
+		</thead>
+		<tbody>
+	   		{% for e in q %}
+	   		<tr align="center">
+		   		<td>{{forloop.counter}}.</td>
+		   		<td><a href="/student/question/{{e.exam.id}}/{{e.user.id}}/{{e.q_index}}">{{e}}</a></td>
+	   		</tr>
+	   		{% endfor %}
+   		</tbody>
+	</table>
+    <br><br>
+	</div>
+</body>
+</html>
+
+<!-- 
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<style>
+	input {
+		border-radius: 5px;
+	}
+</style>
+
+</head>
+<body>
+	<div align="center" style="margin: 100px;background-color: #D3D3D3;border-radius: 5px;padding: 30px">
+	<p style="font-size:24px"><b>Exams created till now:</b></p>
+   {% for e in q %}
+      {{forloop.counter}}.<a href="/student/question/{{e.exam.id}}/{{e.user.id}}/{{e.q_index}}">{{e}}</a><br>
+   {% endfor %}
+   <br><br>
+
+</div>
+</body>
+</html> -->
