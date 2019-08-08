@@ -1,3 +1,7 @@
+Softwares :
+Django
+Python 3
+
 create a new virtual environment with name 'venv'
 
 Use it for main project
